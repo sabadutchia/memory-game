@@ -7,9 +7,9 @@ const fetchElements = async () => {
   const pokemonResponse = response.data.results;
 
   const pokemonElements = await Promise.all(
-    pokemonResponse.map(async (item) => {
+    pokemonResponse.map(async (item, index) => {
       const { data } = await axios.get(item.url);
-      return { name: item.name, url: data.sprites.front_default };
+      return { name: item.name, url: data.sprites.front_default, index };
     })
   );
 

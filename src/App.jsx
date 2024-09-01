@@ -6,6 +6,10 @@ import "./styles/styles.css";
 
 function App() {
   const [elements, setElements] = useState([]);
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+  const [clickedCards, setClickedCards] = useState([]);
+
   useEffect(() => {
     const fetchPokemon = async () => {
       const response = await fetchElements();
@@ -13,15 +17,29 @@ function App() {
     };
     fetchPokemon();
   }, []);
+
+  const incrementScore = (cardIndex) => {
+    if (!clickedCards.includes(cardIndex)) {
+      setClickedCards([...clickedCards, cardIndex]);
+      let newScore = score;
+      setScore(++newScore);
+    } else {
+      if (score > bestScore) {
+        setBestScore(score);
+      }
+      setScore(0);
+      setClickedCards([]);
+    }
+  };
   return (
     <div className="container">
       <header>
         <div>
           <h1>Pokemon Memory Game</h1>
         </div>
-        <ScoreBoard></ScoreBoard>
+        <ScoreBoard score={score} bestScore={bestScore}></ScoreBoard>
       </header>
-      <CardGrid elements={elements}></CardGrid>
+      <CardGrid elements={elements} handleClick={incrementScore}></CardGrid>
     </div>
   );
 }
