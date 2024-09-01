@@ -34,3 +34,9 @@ img {
 .card-content h2 {
   background-color: hotpink;
 }
+
+.card:hover {
+  cursor: pointer;
+  border: solid 8px rgb(151, 25, 88);
+  box-shadow: 10px red;
+}

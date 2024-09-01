@@ -1,4 +1,5 @@
 import axios from "axios";
+import { shuffleArray } from "../helpers/array.helper";
 
 const fetchElements = async () => {
   const response = await axios.get(
@@ -13,7 +14,7 @@ const fetchElements = async () => {
     })
   );
 
-  return pokemonElements;
+  return shuffleArray(pokemonElements);
 };
 
 export default fetchElements;

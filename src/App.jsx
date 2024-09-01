@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import fetchElements from "./api/pokemon.api";
 import CardGrid from "./components/CardGrid";
 import ScoreBoard from "./components/ScoreBoard";
+import { shuffleArray } from "./helpers/array.helper";
 import "./styles/styles.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   }, []);
 
   const incrementScore = (cardIndex) => {
+    setElements(shuffleArray(elements));
     if (!clickedCards.includes(cardIndex)) {
       setClickedCards([...clickedCards, cardIndex]);
       let newScore = score;
