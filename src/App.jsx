@@ -1,29 +1,16 @@
+import { useEffect, useState } from "react";
+import fetchElements from "./api/pokemon.api";
 import CardGrid from "./components/CardGrid";
 
 function App() {
-  // Mock data
-  const elements = [
-    {
-      index: "0",
-      title: "Hola",
-      url: "https://images.unsplash.com/photo-1721332149112-c54e68990d99?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      index: "0",
-      title: "Hola",
-      url: "https://images.unsplash.com/photo-1721332149112-c54e68990d99?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      index: "0",
-      title: "Hola",
-      url: "https://images.unsplash.com/photo-1721332149112-c54e68990d99?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      index: "0",
-      title: "Hola",
-      url: "https://images.unsplash.com/photo-1721332149112-c54e68990d99?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-  ];
+  const [elements, setElements] = useState([]);
+  useEffect(() => {
+    const fetchPokemon = async () => {
+      const response = await fetchElements();
+      setElements(response);
+    };
+    fetchPokemon();
+  }, []);
   return (
     <>
       <CardGrid elements={elements}></CardGrid>
