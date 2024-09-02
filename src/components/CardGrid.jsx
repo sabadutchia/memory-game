@@ -2,7 +2,6 @@ import Card from "./Card";
 
 export default function CardGrid({ elements, handleClick }) {
   let cards = [];
-  console.log(elements);
   elements.forEach((element) => {
     cards.push(
       <Card
