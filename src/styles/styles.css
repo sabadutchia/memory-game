@@ -13,10 +13,26 @@ header h1 {
   color: hotpink;
 }
 
-.score-board {
+.score-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   color: hotpink;
+  background-color: rgb(253, 232, 235);
+  padding: 15px;
+}
+
+.score-container p,
+p strong {
+  background-color: rgb(253, 232, 235);
+}
+
+.score-board {
+  display: flex;
+  justify-content: space-between;
+  color: hotpink;
+  width: 100%;
+  gap: 10px;
+  background-color: rgb(253, 232, 235);
 }

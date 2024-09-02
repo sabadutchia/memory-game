@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../redux/userSlice";
+import { getRandomNumber } from "../helpers/common.helper";
+import { addUser, resetUser } from "../redux/userSlice";
 
 export default function ScoreBoard({ score, bestScore }) {
   const dispatch = useDispatch();
@@ -8,19 +9,18 @@ export default function ScoreBoard({ score, bestScore }) {
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users/1")
+    fetch(`https://jsonplaceholder.typicode.com/users/${getRandomNumber()}`)
       .then((response) => response.json())
       .then((data) => dispatch(addUser(data)));
+    return () => resetUser();
   }, []);
 
   return (
-    <div className="score-board">
-      <div>
-        <p>
-          <strong>User:</strong> {user.name}
-        </p>
-      </div>
-      <div>
+    <div className="score-container">
+      <p>
+        <strong>User:</strong> {user.name}
+      </p>
+      <div className="score-board">
         <p>
           <strong>Score: </strong>
           {score}

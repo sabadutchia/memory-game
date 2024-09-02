@@ -9,13 +9,15 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 50px;
 }
 
 .card {
-  width: 300px;
+  width: 350px;
   padding: 20px;
   background-color: hotpink;
   border-radius: 5px;
+  box-sizing: border-box;
 }
 
 img {
